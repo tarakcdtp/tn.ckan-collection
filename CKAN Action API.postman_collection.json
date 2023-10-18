@@ -2988,44 +2988,8 @@
 									}
 								],
 								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "id",
-											"value": "6e4bccfd-0228-4569-aafa-583b4e3cbbee",
-											"description": "(string) – the name or id of the dataset to update",
-											"type": "text"
-										},
-										{
-											"key": "name",
-											"value": "postman-test-0",
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "title",
-											"value": "postman-patch",
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "private",
-											"value": "true",
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "organization",
-											"value": "3baef195-cad5-40ef-94f2-9ead2dd992f6",
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "state",
-											"value": "active",
-											"type": "text"
-										}
-									]
+									"mode": "raw",
+									"raw": "{\n    \"id\" : \"684d7799-bff8-4872-82c4-2378150b2035\",\n    \"name\" : \"postman-test-1\"\n}"
 								},
 								"url": {
 									"raw": "{{base-url}}/package_patch",
@@ -3274,7 +3238,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{host}}/api/3/action/resource_show",
+									"raw": "{{host}}/api/3/action/resource_show?id=cd670211-80ae-4d60-866e-3dbff924e09c",
 									"host": [
 										"{{host}}"
 									],
@@ -3287,13 +3251,12 @@
 									"query": [
 										{
 											"key": "id",
-											"value": null,
-											"description": "(string) – the id of the resource",
-											"disabled": true
+											"value": "cd670211-80ae-4d60-866e-3dbff924e09c",
+											"description": "(string) – the id of the resource"
 										},
 										{
 											"key": "include_tracking",
-											"value": null,
+											"value": "",
 											"description": "(bool) – add tracking information to dataset and resources (default: False)",
 											"disabled": true
 										}
@@ -3816,9 +3779,14 @@
 									"formdata": [
 										{
 											"key": "id",
-											"value": "",
+											"value": "cd670211-80ae-4d60-866e-3dbff924e09c",
 											"description": "(string) – the id of the resource",
 											"type": "text"
+										},
+										{
+											"key": "upload",
+											"type": "file",
+											"src": "/home/tarakj/Bureau/export_lot_178 (mise a jour corporate).csv"
 										}
 									]
 								},
@@ -6460,10 +6428,154 @@
 					"name": "DataStore",
 					"item": [
 						{
+							"name": "datastore_info",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "id",
+											"value": "cd670211-80ae-4d60-866e-3dbff924e09c",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/api/3/action/datastore_info",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"3",
+										"action",
+										"datastore_info"
+									],
+									"query": [
+										{
+											"key": "permission",
+											"value": "",
+											"description": "(string) – the permission the user has against the returned organizations, for example \"read\" or \"create_dataset\" (optional, default: \"edit_group\")",
+											"disabled": true
+										}
+									]
+								},
+								"description": "[API Documentation 2.6.3](http://docs.ckan.org/en/ckan-2.6.3/api/index.html#ckan.logic.action.get.organization_list_for_user)"
+							},
+							"response": []
+						},
+						{
+							"name": "datastore_search",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "resource_id",
+											"value": "cd670211-80ae-4d60-866e-3dbff924e09c",
+											"type": "text"
+										},
+										{
+											"key": "filters",
+											"value": "{\"field\": \"value\"}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/api/3/action/datastore_search",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"3",
+										"action",
+										"datastore_search"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								},
+								"description": "[API Documentation 2.6.3](http://docs.ckan.org/en/ckan-2.6.3/api/index.html#ckan.logic.action.get.organization_list_for_user)"
+							},
+							"response": []
+						},
+						{
+							"name": "datastore_search_sql",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "sql",
+											"value": "select * from \"cd670211-80ae-4d60-866e-3dbff924e09c\"",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/api/3/action/datastore_search_sql",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"3",
+										"action",
+										"datastore_search_sql"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								},
+								"description": "[API Documentation 2.6.3](http://docs.ckan.org/en/ckan-2.6.3/api/index.html#ckan.logic.action.get.organization_list_for_user)"
+							},
+							"response": []
+						},
+						{
 							"name": "datastore_create",
 							"request": {
-								"method": "GET",
-								"header": [],
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"resource_id\" : \"cd670211-80ae-4d60-866e-3dbff924e09c\",\n    \"force\" : true,\n    \"records\" : [{\"dob\": \"2005\", \"some_stuff\": [\"a\", \"b\"]}]\n}"
+								},
 								"url": {
 									"raw": "{{host}}/api/3/action/datastore_create",
 									"host": [
@@ -6474,36 +6586,90 @@
 										"3",
 										"action",
 										"datastore_create"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
 									]
 								},
-								"description": "Adds a new table to the DataStore.\n\nThe datastore_create action allows you to post JSON data to be stored against a resource. This endpoint also supports altering tables, aliases and indexes and bulk insertion. This endpoint can be called multiple times to initially insert more data, add fields, change the aliases or indexes as well as the primary keys.\n\nTo create an empty datastore resource and a CKAN resource at the same time, provide resource with a valid package_id and omit the resource_id.\n\nIf you want to create a datastore resource from the content of a file, provide resource with a valid url."
+								"description": "[API Documentation 2.6.3](http://docs.ckan.org/en/ckan-2.6.3/api/index.html#ckan.logic.action.get.organization_list_for_user)"
 							},
 							"response": []
 						},
 						{
-							"name": "New Request",
+							"name": "datastore_upsert",
 							"request": {
 								"method": "POST",
-								"header": [],
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
 								"body": {
-									"mode": "formdata",
-									"formdata": [
+									"mode": "raw",
+									"raw": "{\n    \"resource_id\" : \"cd670211-80ae-4d60-866e-3dbff924e09c\",\n    \"force\" : true,\n    \"records\" : [{\"dob\": \"2005\", \"some_stuff\": [\"a\", \"b\"]}],\n    \"method\" : \"insert\"\n}"
+								},
+								"url": {
+									"raw": "{{host}}/api/3/action/datastore_upsert",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"3",
+										"action",
+										"datastore_upsert"
+									],
+									"query": [
 										{
-											"key": "id",
-											"value": "3b1c66d4-7850-4539-a46e-4d235a5db93c",
-											"type": "text"
+											"key": "",
+											"value": "",
+											"disabled": true
 										}
 									]
 								},
+								"description": "[API Documentation 2.6.3](http://docs.ckan.org/en/ckan-2.6.3/api/index.html#ckan.logic.action.get.organization_list_for_user)"
+							},
+							"response": []
+						},
+						{
+							"name": "datastore_delete",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"resource_id\" : \"cd670211-80ae-4d60-866e-3dbff924e09c\",\n    \"force\" : true\n}"
+								},
 								"url": {
-									"raw": "{{base-url}}/datastore_info",
+									"raw": "{{host}}/api/3/action/datastore_delete",
 									"host": [
-										"{{base-url}}"
+										"{{host}}"
 									],
 									"path": [
-										"datastore_info"
+										"api",
+										"3",
+										"action",
+										"datastore_delete"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
 									]
-								}
+								},
+								"description": "[API Documentation 2.6.3](http://docs.ckan.org/en/ckan-2.6.3/api/index.html#ckan.logic.action.get.organization_list_for_user)"
 							},
 							"response": []
 						}
